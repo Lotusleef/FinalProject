@@ -3,9 +3,9 @@ package web.utils;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class Hooks {
     public static WebDriver driver;
@@ -14,8 +14,11 @@ public class Hooks {
     @Before("@web")
     public void setUp() {
         io.github.bonigarcia.wdm.WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--incognito");
+        driver = new ChromeDriver(options);
         driver.manage().window().maximize();
+
         driver.manage().timeouts().pageLoadTimeout(java.time.Duration.ofSeconds(30));
         driver.manage().timeouts().implicitlyWait(java.time.Duration.ZERO); // <-- matikan implicit
     }
