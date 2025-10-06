@@ -55,8 +55,6 @@ jobs:
       - name: Run Web UI tests
         run: ./gradlew clean test --tests web.runners.WebTestRunner
 
-      - name: Run General Tests
-        run: ./gradlew clean test
 
       # ✅ Upload Report Cucumber untuk Web Testing
       - name: Upload Cucumber Report (Web)
