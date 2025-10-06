@@ -50,13 +50,13 @@ jobs:
           chromedriver --version
 
       - name: Run API tests
-        run: ./gradle api.runners.ApiTestRunner
+        run: ./gradle clean test --tests api.runners.ApiTestRunner
 
       - name: Run Web UI tests
-        run: ./gradle web.runners.WebTestRunner
+        run: ./gradle clean test --tests web.runners.WebTestRunner
 
       - name: Run General Tests
-        run: ./gradle test
+        run: ./gradle clean test
 
       # ✅ Upload Report Cucumber untuk Web Testing
       - name: Upload Cucumber Report (Web)
