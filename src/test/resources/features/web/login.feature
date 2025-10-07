@@ -21,3 +21,8 @@ Feature: SauceDemo Login and Checkout
     When I add products and proceed to checkout @web
     And I complete checkout info "Ray" "Han" "10010" @web
     Then Order should be completed and I can return to homepage @web
+
+  Scenario: Logout after successful
+    Given I am logged in as standard_user @web
+    When I logout @web
+    Then I should be back on login page @web

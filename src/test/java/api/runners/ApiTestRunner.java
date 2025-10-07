@@ -8,7 +8,6 @@ import static io.cucumber.junit.platform.engine.Constants.*;
 @SelectClasspathResource("features/api")
 @ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "api.stepdef")
 @ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value =
-        "pretty, html:build/reports/cucumber/api.html, json:build/reports/cucumber/api.json, junit:build/reports/cucumber/api-junit.xml")
+        "pretty, html:build/reports/cucumber/api/index.html, json:build/reports/cucumber/api/cucumber.json, junit:build/reports/cucumber/api/junit.xml")
 @ConfigurationParameter(key = FILTER_TAGS_PROPERTY_NAME, value = "@api")
-public class ApiTestRunner {
-}
+public class ApiTestRunner { }

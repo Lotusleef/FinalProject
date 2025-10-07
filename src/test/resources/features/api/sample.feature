@@ -10,16 +10,20 @@ Feature: DummyAPI CRUD and Tags
     Then response status should be 200
     And response should contain field "id"
 
-  Scenario: Create, Update, and Delete user
+  Scenario: Create user
     When I create a new user @api
     Then response status should be 200
     And response should contain field "id"
 
-    When I update the user with new firstName "RayUpdated" @api
+  Scenario: Update user
+    When I create a new user @api
+    And I update the user with new firstName "RayUpdated" @api
     Then response status should be 200
     And response should contain field "firstName"
 
-    When I delete the user @api
+  Scenario: Delete user
+    When I create a new user @api
+    And I delete the user @api
     Then response status should be 200
     And response should contain field "id"
 
