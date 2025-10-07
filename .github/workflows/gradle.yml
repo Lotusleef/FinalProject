@@ -52,8 +52,31 @@ jobs:
       - name: Run API tests
         run: ./gradlew clean test --tests api.runners.ApiTestRunner
 
+      - name: Upload Cucumber Report (API)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cucumber-api
+          path: |
+            build/reports/cucumber/api/index.html
+            build/reports/cucumber/api/cucumber.json
+            build/reports/cucumber/api/junit.xml
+          if-no-files-found: warn
+
       - name: Run Web UI tests
         run: ./gradlew clean test --tests web.runners.WebTestRunner
+
+      - name: Upload Cucumber Report (Web)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cucumber-web
+          path: |
+            build/reports/cucumber/web/index.html
+            build/reports/cucumber/web/cucumber.json
+            build/reports/cucumber/web/junit.xml
+            build/reports/screenshots/**    # jika kamu aktifkan simpan screenshot
+          if-no-files-found: warn
 
 
       # ✅ Upload Report Cucumber untuk Web Testing
